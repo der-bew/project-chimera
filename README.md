@@ -1,5 +1,9 @@
+<div align="center">
+  
 # Project Chimera: The Agentic Infrastructure
 ### The Factory that builds the Autonomous Influencer.
+
+</div>
 
 ## Spec-Driven Python MCP
 
@@ -66,4 +70,5 @@ graph TD
     style Judge fill:#ff9,stroke:#333,stroke-width:2px
     style CFO fill:#f96,stroke:#333,stroke-width:2px
 ```
+
 
