@@ -15,3 +15,12 @@ Chimera will advertise its availability via a standardized "Heartbeat" packet se
     "status": "online"
     }
 ```
+## 2. Negotiation Protocol (Inbox)
+Chimera listens on a private queue for contract offers.
+Incoming Offer: `{ "campaign_id": "x", "offer_amount": 100, "requirements": [...] }`
+Response: Chimera signs the offer hash with its wallet to accept.
+
+## 3. Reputation Protocol (Query)
+Before engaging with a new agent, Chimera queries the Reputation Ledger.
+Query: `GET /reputation/{agent_address}`
+Response: `{ "score": 0.98, "flags": [] }`
