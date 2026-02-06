@@ -11,10 +11,11 @@ export default function HomePage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    const controller = new AbortController();
     const baseUrl = process.env.NEXT_PUBLIC_API_BASE ?? "http://localhost:8000";
     const url = `${baseUrl}/health`;
 
-    fetch(url)
+    fetch(url, { signal: controller.signal })
       .then((res) => {
         if (!res.ok) {
           throw new Error(`Health check failed: ${res.status}`);
@@ -23,6 +24,8 @@ export default function HomePage() {
       })
       .then(setHealth)
       .catch((err) => setError(err.message));
+
+    return () => controller.abort();
   }, []);
 
   return (
