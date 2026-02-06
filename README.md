@@ -73,6 +73,26 @@ graph TD
 
 ## 📁 Project Structure
 
+```
+backend/
+    app/
+        main.py
+frontend/
+    app/
+        globals.css
+        layout.tsx
+        page.tsx
+    package.json
+specs/
+    functional.md
+    technical.md
+src/
+    main.py
+tests/
+research/
+skills/
+```
+
 
 
 ## 🚀 Quick Start
