@@ -1,0 +1,27 @@
+language: "en"
+
+# Tell the AI how to review our code
+reviews:
+  path_filters:
+    - "!specs/**"  # Don't review the specs themselves, only the code
+    - "src/**"
+    - "skills/**"
+
+  rules:
+    - name: "Spec Alignment Check"
+      description: "Ensure all new code features have a corresponding definition in specs/technical.md or specs/functional.md."
+      violation_type: "warning"
+      message: "This code looks like new functionality, but I can't find a matching contract in `specs/`. Please update the spec before implementing."
+
+    - name: "Pydantic Strictness"
+      description: "Ensure all data models use Pydantic and have strict types."
+      violation_type: "error"
+      message: "Data models must use Pydantic with strict type validation to prevent runtime hallucinations."
+
+    - name: "MCP Enforcement"
+      description: "Ensure no direct API calls (requests.get) are made. Use MCP clients instead."
+      violation_type: "error"
+      message: "Direct API call detected. Please route this through the MCP abstraction layer."
+
+# Instructions for the AI persona
+tone: "strict_architect"
