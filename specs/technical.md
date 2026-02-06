@@ -35,6 +35,20 @@ We use a Hybrid approach.
     );
 ```
 
+### 4. Service Layout (Backend + Frontend)
+
+#### 4.1 Backend (FastAPI)
+- Location: `backend/`
+- Entry: `backend/app/main.py`
+- Minimal health endpoint: `GET /health` returns `{ "status": "ok" }`
+- CORS: allow local frontend origin during development
+
+#### 4.2 Frontend (Next.js)
+- Location: `frontend/`
+- Router: App Router (Next.js 13+)
+- Entry: `frontend/app/page.tsx`
+- Health check UI: simple page that calls `GET /health` and displays result
+
 **Table**: video_metadata
 
 ```sql
