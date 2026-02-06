@@ -74,9 +74,6 @@ graph TD
 ## 📁 Project Structure
 
 ```
-backend/
-    app/
-        main.py
 frontend/
     app/
         globals.css
@@ -87,6 +84,9 @@ specs/
     functional.md
     technical.md
 src/
+    chimera/
+        api/
+            main.py
     main.py
 tests/
 research/

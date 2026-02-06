@@ -38,8 +38,8 @@ We use a Hybrid approach.
 ### 4. Service Layout (Backend + Frontend)
 
 #### 4.1 Backend (FastAPI)
-- Location: `backend/`
-- Entry: `backend/app/main.py`
+- Location: `src/chimera/api/`
+- Entry: `src/chimera/api/main.py`
 - Minimal health endpoint: `GET /health` returns `{ "status": "ok" }`
 - CORS: allow local frontend origin during development
 
