@@ -1,0 +1,27 @@
+name: Project Chimera CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  governance-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Install uv
+      run: pip install uv
+
+    - name: Install Dependencies
+      run: uv sync
+
+    - name: Run Tests (The Governor)
+      run: uv run pytest -v
+
+    - name: Lint Code
+      run: uv run ruff check .
