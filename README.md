@@ -71,4 +71,68 @@ graph TD
     style CFO fill:#f96,stroke:#333,stroke-width:2px
 ```
 
+## 📁 Project Structure
 
+
+
+## 🚀 Quick Start
+
+1. Install Dependencies
+
+```bash
+    # Install uv if you haven't: pip install uv
+    uv sync
+```
+
+2. Configure Environment
+
+```bash
+    cp .env.example .env
+    # Edit .env with your API Keys (Anthropic, Coinbase, etc.)
+```
+
+3. Run The Factory
+
+```bash
+    # Activate the virtual shell
+    source .venv/bin/activate
+
+    # Run the infrastructure checks (Tests)
+    make test
+
+    # Start a local worker agent
+    python -m chimera.cli start-worker
+```
+
+## 🛠️ Development Philosophy
+### Spec-Driven Development (SDD)
+Implementation code is forbidden without a ratified specification.
+
+1. Spec First: Define the contract in `specs/technical.md`.
+2. Test Second: Write a failing test in `tests/`.
+3. Code Last: Implement only to satisfy the test and spec.
+### The Golden Rules
+1. MCP Only: All external interactions must pass through the Model Context Protocol. No direct API calls in agent logic.
+2. Strict Typing: All data structures must use pydantic.BaselineModel.
+3. Governance: Every commit runs the CI pipeline to ensure code quality and security.
+
+## 🔧 Tech Stack
+
+| Layer | Technology |
+| :--- | :--- |
+| **Runtime** | Python 3.10+, AsyncIO |
+| **Orchestration** | Redis (Queue), Celery/BullMQ |
+| **Data** | PostgreSQL (Transactional), Weaviate (Vector/RAG) |
+| **AI/ML** | Claude Opus 4.5 (Reasoning), Gemini 3 Flash (Tasks) |
+| **Protocol** | Model Context Protocol (MCP) |
+| **Commerce** | Coinbase AgentKit (Base Network) |
+| **Tooling** | `uv`, `Ruff`, `Pytest`, `Docker` |
+
+
+## 🤝 Contributing (For Humans & Agents)
+Before contributing, ensure your IDE context is loaded with `.cursor/rules`.
+
+1. **Checkout** the latest main.
+2. **Spec** your change in `specs/`.
+3. **Test** your change locally (make test).
+4. **PR** must reference the specific Spec ID it fulfills.
